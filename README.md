@@ -1,8 +1,6 @@
 # SimpleCancan
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/simple_cancan`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+SimpleCancan is an awesome version from cancan designed for Padrino.
 
 ## Installation
 
@@ -21,6 +19,10 @@ Or install it yourself as:
     $ gem install simple_cancan
 
 ## Usage
+
+SimpleCancan expects a current_account method to exist in the controller.
+
+###1.Define Abilities
 
 Create a new file named ability.rb in your models, here is the example:
 
@@ -42,15 +44,31 @@ Create a new file named ability.rb in your models, here is the example:
 	end
 More details please go to https://github.com/ryanb/cancan/wiki/defining-abilities.
 
-## Development
+###2.Include controller additions in your related app file, here is the example:
+	
+  	class App < Padrino::Application
+  		include SimpleCancan::ControllerAdditions
+  		......
+  	end
 
-After checking out the repo, run `bin/setup` to install dependencies. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
+###3.Use defined abilities in specific controllers:
+	
+	ProjectName::App.controllers :posts do
 
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+		get :compose do
+	    	if can? :write, Article.first
+	    		......
+	    	else
+	    		......
+	    	end
+	  	end
+
+	end
+More details please go to https://github.com/ryanb/cancan/wiki/checking-abilities
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/simple_cancan.
+Bug reports and pull requests are welcome on GitHub at https://github.com/FuhaoInUoM/simple_cancan.
 
 
 ## License
