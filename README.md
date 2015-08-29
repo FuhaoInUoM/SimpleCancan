@@ -22,7 +22,26 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+Create a new file named ability.rb in your models, here is the example:
+
+	class Ability
+	  include SimpleCanCan::Ability
+
+	  def initialize(account)
+
+	    account ||= Account.new
+	    
+	    case account.role
+	    when "admin"
+	    	can :manage, :all
+	    when "editor"
+	    	can :write, Article
+	    …
+	    end
+	  end
+	end
+	
+More details please go to https://github.com/ryanb/cancan/wiki/defining-abilities.
 
 ## Development
 
