@@ -42,7 +42,6 @@ Create a new file named ability.rb in your models, here is the example:
 	end
 More details please go to https://github.com/ryanb/cancan/wiki/defining-abilities.
 
-
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
