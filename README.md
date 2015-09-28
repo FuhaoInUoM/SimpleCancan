@@ -27,7 +27,7 @@ SimpleCancan expects a current_account method to exist in the controller.
 Create a new file named ability.rb in your models, here is the example:
 
 	class Ability
-	  include SimpleCanCan::Ability
+	  include SimpleCancan::Ability
 
 	  def initialize(account)
 
